@@ -23,6 +23,10 @@ function App() {
         setConvertedAmount(0)
         return
     }
+    if(from === to) {
+        setConvertedAmount(amount);
+        return;
+    }
     fetch(`https://api.frankfurter.app/latest?amount=${amount}&from=${from}&to=${to}`)
     .then((res) => res.json())
     .then((res) => setConvertedAmount(Object.values(res.rates)[0]))
